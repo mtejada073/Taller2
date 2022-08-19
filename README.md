@@ -20,8 +20,8 @@ _Explica como ejecutar las pruebas automatizadas para este sistema_
 Seguir los siguientes pasos:
 
 ```
-* `source .venv/bin/activate`
-* `uvicorn main:app --reload`
+* source .venv/bin/activate
+* uvicorn main:app --reload
 ```
 
 #### Probar localmente 🔎
