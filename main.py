@@ -1,4 +1,6 @@
+from tokenize import String
 from typing import Union
+from xxlimited import Str
 from fastapi import FastAPI
 import requests
 from prometheus_fastapi_instrumentator import Instrumentator
@@ -19,11 +21,24 @@ logger = logging.getLogger(__name__)  # the __name__ resolve to "main" since we 
 
 @app.get("/")
 def read_root():
-    url = 'https://62f6640ba3bce3eed7c04b72.mockapi.io/items'
+    #url = 'https://62f6640ba3bce3eed7c04b72.mockapi.io/items'
+    response = infoUser()
+    return {"items": response }
+
+
+#@app.get("/items/{item_id}")
+#def read_item(item_id: int, q: Union[str, None] = None):
+#    return {"item_id": item_id, "q": q}
+
+@app.get("/infoUser/{idUsuario}")
+def read_item(idUsuario : str):
+    list=infoUser()
+    for item in list:
+        print(item)
+        if item["idUsuario"]==idUsuario:
+            return item
+
+def infoUser():
+    url='https://62fef1fea85c52ee483e83bb.mockapi.io/infoUser'
     response = requests.get(url, {}, timeout=5)
-    return {"items": response.json() }
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+    return response.json()
