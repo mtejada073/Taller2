@@ -21,14 +21,8 @@ logger = logging.getLogger(__name__)  # the __name__ resolve to "main" since we 
 
 @app.get("/")
 def read_root():
-    #url = 'https://62f6640ba3bce3eed7c04b72.mockapi.io/items'
     response = infoUser()
     return {"items": response }
-
-
-#@app.get("/items/{item_id}")
-#def read_item(item_id: int, q: Union[str, None] = None):
-#    return {"item_id": item_id, "q": q}
 
 @app.get("/infoUser/{idUsuario}")
 def read_item(idUsuario : str):
