@@ -32,6 +32,7 @@ def read_item(idUsuario : str):
         if item["idUsuario"]==idUsuario:
             return item
 
+
 def infoUser():
     url='https://62fef1fea85c52ee483e83bb.mockapi.io/infoUser'
     response = requests.get(url, {}, timeout=5)
